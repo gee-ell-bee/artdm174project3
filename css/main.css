@@ -1,3 +1,14 @@
+/* #region random comments */
+/* REALLY NICE COLOR COMBO: 
+    -BG
+     - lemonchiffon
+    - main area color
+     - rgba(234, 174, 21, 0.651); not-strikingly-intense gold
+    - accent color
+     - rgba(178, 34, 34, 0.927); brick red
+*/
+/* #endregion */
+
 /* #region reset */
 *,
 *::before,
@@ -15,7 +26,7 @@ body {
 }
 
 body {
-    background-color:rgba(234, 174, 21, 0.651);
+    background-color:blanchedalmond;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     font-size: clamp(16px, 1.5vw, 20px);
@@ -57,10 +68,65 @@ h6 {
 
 /* #region MOBILE main */
 main {
-    width: 60vw;
+    margin: 2.5vw auto;
+    width: 95vw;
     height: max-content;
+}
+
+header {
+    line-height: .9;
+    border-bottom: solid .25rem;
+    margin: 1.25rem auto auto auto;
+}
+
+.articleBody {
+    border-top: solid .35rem rgba(178, 34, 34, 1);
+    padding: 3vw 3vw 7vw 3vw;
+    background-color:lightblue;
+    margin-bottom: 4vw;
+}
+
+section#intro {
+    margin: auto;
+}
+
+video#vid {
     padding: 5vw;
     background-color:rgba(178, 34, 34, 0.927); /* brick red */
+}
+
+footer {
+    margin: 6vw 4vw;
+    font-family: 'Trebuchet MS', Verdana, sans-serif;
+}
+
+footer nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+
+iframe {
+	width:100%;
+	height:50vh;
+    overflow: scroll;
+}
+
+/* #endregion */
+
+/* #region MOBILE text */
+a {
+    color: rgb(112, 25, 25);
+}
+
+nav a {
+    font-style: italic;
+}
+
+h1 {
+    font-size: 1.8rem;
+    text-align: center;
 }
 
 ::cue {
@@ -78,5 +144,11 @@ main {
     background-color:rgba(86, 86, 86, 0.546);
 }
 
+footer h2 {
+    font-style: italic;
+    font-weight: normal;
+    font-size: inherit;
+    text-align: center;
+}
 
 /* #endregion */
