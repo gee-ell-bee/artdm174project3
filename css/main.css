@@ -15,8 +15,11 @@ body {
 }
 
 body {
+    background-color:rgba(234, 174, 21, 0.651);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 img,
@@ -53,7 +56,27 @@ h6 {
 /* #endregion */
 
 /* #region MOBILE main */
+main {
+    width: 60vw;
+    height: max-content;
+    padding: 5vw;
+    background-color:rgba(178, 34, 34, 0.927); /* brick red */
+}
 
+::cue {
+    position: absolute;
+    left: 0;
+    margin-top:-3.5em;
+    min-height:3em;
+    line-height: 1.7;
+    text-align: center;
+    font-family: sans-serif;
+    color: white;
+    text-shadow: black 1px 1px 3px;
+    font-size: 2vw;
+    padding: 1rem;
+    background-color:rgba(86, 86, 86, 0.546);
+}
 
 
 /* #endregion */
