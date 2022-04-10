@@ -114,6 +114,9 @@ section.captions {
     justify-content: stretch;
     align-items: center;
     grid-gap: 2vw;
+}
+
+section.captions.show {
     height: 20vh;
     margin: 1vw auto 7vw auto;
 }
@@ -126,12 +129,12 @@ section.captions section.lang {
     height:100%;
 }
 
-section.captions #selectedLang {
+section.captions #selected {
     flex-basis: 60%;
     width: 100%;
 }
 
-section.captions #otherLang {
+section.captions #other {
     opacity: .6;
     flex-basis: 40%;
     width: 90%;
@@ -176,10 +179,21 @@ h1 {
 }
 
 footer h2 {
+    margin: 0;
+    padding: 0;
     font-style: italic;
     font-weight: normal;
     font-size: inherit;
     text-align: center;
+    transition: all .5s ease-in;
+}
+
+footer h2.hide {
+    opacity: .5;
+}
+
+footer h2.hide::after {
+    content: " \2192";
 }
 
 /* #endregion */
@@ -200,13 +214,11 @@ footer h2 {
         display: visible;
         opacity: 0;
         height: fit-content;
-        margin: 0;
     }
 
     to {
         display: none;
         opacity: 0;
-        margin: 0;
         height: 0;
     }
 }
