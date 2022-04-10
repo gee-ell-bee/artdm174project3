@@ -26,6 +26,7 @@ langList.forEach(function(lang) {
     section.classList.add('lang');
     section.id = lang;
     docFrag.appendChild(section);
+    console.log({vid});
 });
 
 vid.addEventListener('play', () => {
