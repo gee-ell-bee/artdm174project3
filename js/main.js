@@ -73,13 +73,13 @@ document.addEventListener("DOMContentLoaded", init);
 /* //end by Troy Bennett */
 function init() {
     // event listener to show the language HTML sections
+    
+    displayChapters(chapterTrack);
     vid.addEventListener('play', () => {
         if(!langSection.classList.contains('show')) {
             langSection.classList.add('show');
             //append langSection to document fragment
             langSection.appendChild(docFrag);
-        
-        displayChapters(chapterTrack);
         
         };
 
