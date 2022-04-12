@@ -237,6 +237,7 @@ footer h2.hide::after {
     justify-content: space-around;
     flex-flow: row wrap;
 }
+
 input:active, #chapterOl li:active {
     opacity: .5;
 }
@@ -245,7 +246,7 @@ input.active {
     opacity: .8;
 }
 
-#rw, #ff, #restart {
+#rw, #ff, #restart{
     border: var(--controlsBorder);
     width: clamp(30px, 5vw, 50px);
     height: clamp(30px, 5vw, 50px);
@@ -262,6 +263,9 @@ input.active {
 #chapterOl li {
     margin: 1vw;
     padding: 2vw;
+}
+
+#chapterOl li {
     display: flex;
     align-items: center;
 }
