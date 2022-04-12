@@ -15,7 +15,7 @@ let docFrag = new DocumentFragment();
 let langSection = document.querySelector('#caps');
 //differentiate between each section
 const langList = ['selected', 'other'];
-const chapterTrack = document.querySelector('#chapters');
+const redubChapterTrack = document.querySelector('#redubChapters');
 
 
 
@@ -28,6 +28,11 @@ langList.forEach(function(lang) {
     console.log({vid});
 });
 
+
+/* adapted from Rex Barkdoll's "HTML5 Video with Chapters"
+/ original: http://thenewcode.com/977/Create-Interactive-HTML5-Video-with-WebVTT-Chapters
+/ updated source also referenced: https://codepen.io/rexbarkdoll/pen/XWMNwJM */
+// chapters links
 function displayChapters(chapElem){
 	if (chapElem){
         const textTrack = chapElem.track;
@@ -72,9 +77,11 @@ document.addEventListener("DOMContentLoaded", init);
 
 /* //end by Troy Bennett */
 function init() {
-    // event listener to show the language HTML sections
     
-    displayChapters(chapterTrack);
+    // add chapter links
+    displayChapters(redubChapterTrack);
+
+    // show the language HTML sections
     vid.addEventListener('play', () => {
         if(!langSection.classList.contains('show')) {
             langSection.classList.add('show');
@@ -84,6 +91,7 @@ function init() {
         };
     });
     
+    // defining iFrame cues
     var myVidCues = [
         { seconds: 10, callback: subtitleAttention },
         { seconds: 35, callback: learnChinese },
