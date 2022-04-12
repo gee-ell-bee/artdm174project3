@@ -18,14 +18,21 @@
         </header>
         <div class="articleBody">
         <section class="video">
+            <div class="pop hide">
+                <p></p>
+            </div>
             <video id="vid" controls>
 
                 <source src="vid/chi_dst_redubbed.mp4" type="video/mp4">
                 <source src="vid/chi_dst_redubbed.webm" type="video/webm">
                 <track label="English &lbrack;Subtitles&rbrack;" kind="subtitles" label="On" srclang="en"
-                    src="cap/chi_dst_redubbed_eng_subs.vtt" default>
+                    src="cap/redubbed_eng_subs.vtt" default>
                 <track label="中文 - 繁體" kind="captions" srclang="zh"
-                    src="cap/chi_dst_redubbed_chtrad_caps.vtt">
+                    src="cap/redubbed_chtrad_caps.vtt">
+                <track label="Chapters" kind="chapters" srclang="en" default
+                    src="cap/redubbed_chapters.vtt">
+                <track label="Sentences" kind="chapters" srclang="en"
+                    src="cap/redubbed_sentences.vtt">
 
                 <!-- final fallback to text -->
                 <h2>Grey's Chinese Journey</h2>
@@ -58,6 +65,37 @@
                     continue learning for the foreseeable future.</p>
             </video>
         </section>
+        <section class="controls">
+            <h2 id="controls">Controls</h2>
+            <form id="video_form">
+                <fieldset>
+                    <input type="button" id="restart" onclick="seekVideo(vid, 0)" title="Restart" value="">
+                    <input type="button" id="seek_first_verse" onclick="seekVideo(vid, 265)" value="First Verse">
+                    <input type="button" id="seek" onclick="seekVideo(vid, 188)" value="Go to Bridge">
+                    <input type="button" id="switch" onclick="" title="Switch Between Versions" value="Switch Off">
+                </fieldset>
+                <fieldset class="half">
+                    <select id="video_select">
+                        <option>Select a video to play...</option>
+                        <option value="vid/chi_dst_redubbed.mp4">Redubbed (MP4)</option>
+                        <option value="vid/chi_dst_redubbed.webm">Redubbed (WEBM)</option>
+                        <option value="vid/chi_dst_orig.mp4">Original (MP4)</option>
+                        <option value="vid/chi_dst_orig.webm">Original (WEBM)</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label>Currently, rewind only works in Safari
+                        <input type="button" id="rw" onclick="playRate(vid, -2.5)" title="Rewind" value="&lt;&lt;">
+                    </label>
+                    <input type="button" id="ff" onclick="playRate(vid, 2.5)" title="Fast Forward" value="> >">
+                </fieldset>
+            </form>
+        </section>
+        <section id="caps" class="captions">
+        </section>
+        <section class="iframe">
+            <iframe id="web" src="iframe.html"></iframe>
+        </section>
         <footer>
             <h2 class="hide">Find Grey Now</h2>
             <nav class="hidden">
@@ -68,11 +106,6 @@
                 </ul>
             </nav>
         </footer>
-        <section id="caps" class="captions">
-        </section>
-        <section class="iframe">
-            <iframe id="web" src="iframe.html"></iframe>
-        </section>
     </div>
     </main>
 </body>
