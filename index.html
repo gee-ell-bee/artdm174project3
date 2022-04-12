@@ -25,8 +25,10 @@
 
                 <source src="vid/chi_dst_redubbed.mp4" type="video/mp4">
                 <source src="vid/chi_dst_redubbed.webm" type="video/webm">
+                <source src="vid/chi_dst_orig.mp4" type="video/mp4">
+                <source src="vid/chi_dst_orig.webm" type="video/webm">
 
-                <track id="current" label="English &lbrack;Subtitles&rbrack;" kind="subtitles" label="On" srclang="en"
+                <track id="eng" label="English &lbrack;Subtitles&rbrack;" kind="subtitles" label="On" srclang="en"
                     src="cap/redubbed_eng_subs.vtt" class="redub" default>
                 <track label="中文 - 繁體" kind="captions" srclang="zh"
                     src="cap/redubbed_chtrad_caps.vtt" class="redub">
@@ -35,7 +37,7 @@
                 <track label="Sentences" kind="chapters" srclang="en"
                     src="cap/redubbed_sentences.vtt" class="redub">
 
-                <track label="English &lbrack;Subtitles&rbrack;" kind="subtitles" label="On" srclang="en"
+<!--                <track label="English &lbrack;Subtitles&rbrack;" kind="subtitles" label="On" srclang="en"
                     src="cap/orig_eng_subs.vtt" class="orig">
                 <track label="中文 - 繁體" kind="captions" srclang="zh"
                     src="cap/orig_chtrad_caps.vtt" class="orig">
@@ -43,6 +45,7 @@
                     src="cap/orig_chapters.vtt" class="orig">
                 <track label="Sentences" kind="chapters" srclang="en"
                     src="cap/orig_sentences.vtt" class="orig">
+-->
 
                 <!-- final fallback to text -->
                 <h2>Grey's Chinese Journey</h2>
@@ -75,14 +78,14 @@
                     continue learning for the foreseeable future.</p>
             </video>
         </section>
+
         <section class="controls">
             <h2 id="controls">Controls</h2>
             <form id="video_form">
                 <fieldset id="buttons">
                     <input type="button" id="restart" onclick="seekVideo(vid, 0)" title="Restart" value="">
-                    <input type="button" id="switch" onclick="switchVideo()" title="Switch Video" value="">
-                    <ol id="chapterOl">
-                    </ol>
+                    <input type="button" id="switch" onclick="switchVideo()" title="Switch Video" value="Switch Video">
+                    <ol id="chapterOl"></ol>
                 </fieldset>
                 <fieldset id="videoSelect" class="half">
                     <select id="video_select">
@@ -95,11 +98,10 @@
                 </fieldset>
             </form>
         </section>
+
         <section id="caps" class="captions">
         </section>
-        <section class="iframe">
-            <iframe id="web" src="iframe.html"></iframe>
-        </section>
+
         <footer>
             <h2 id="foothead" class="hide">Find Grey Now</h2>
             <nav class="hidden">
@@ -110,6 +112,7 @@
                 </ul>
             </nav>
         </footer>
+
     </div>
     </main>
 </body>

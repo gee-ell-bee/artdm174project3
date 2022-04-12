@@ -3,11 +3,6 @@
 const footer = document.querySelector('#foothead');
 const controls = document.querySelector('#controls');
 
-//append event listener to footer
-footer.addEventListener('click', activateDropdown);
-// auto hiding controls
-controls.addEventListener('click', activateDropdown);
-
 // adding text track to HTML section
 //create vars
 const vid = document.querySelector('#vid');
@@ -15,6 +10,7 @@ let docFrag = new DocumentFragment();
 let langSection = document.querySelector('#caps');
 //differentiate between each section
 const langList = ['en', 'zh'];
+
 const redubChapterTrack = document.querySelector('#redubChapters');
 
 
@@ -28,6 +24,10 @@ document.addEventListener("DOMContentLoaded", init);
 
 /* //end by Troy Bennett */
 function init() {
+    // auto hiding footer
+    footer.addEventListener('click', activateDropdown);
+    // auto hiding controls
+    /* NOT WORKING */controls.addEventListener('click', activateDropdown);
 
     // function to make each language section
         langList.forEach(function(lang) {
@@ -37,9 +37,12 @@ function init() {
             docFrag.appendChild(section);
             console.log({vid});
         });
-    
+
+    // language track variables
     let engLang = document.getElementById('en');
     let chiLang = document.getElementById('zh');
+
+
 
     // add chapter links
     displayCaps(redubChapterTrack);
@@ -55,10 +58,7 @@ function init() {
     
     // defining iFrame cues
     var myVidCues = [
-        { seconds: 10, callback: subtitleAttention },
-        { seconds: 35, callback: learnChinese },
-        { seconds: 90, callback: eastBayChineseSchool },
-        { seconds: 170, callback: smithEastAsianLang }
+        { seconds: 10, callback: subtitleAttention }
     ];
 
     //activates the cuepoints module
@@ -67,7 +67,6 @@ function init() {
     //shortcut variables
     const selectList = document.querySelector("#video_select");
     const selectOpts = selectList.querySelectorAll('option');
-    console.log(selectOpts);
     selectOpts.forEach(source => {
         let srcType = source.value;
         /*if(srcType = type) {
@@ -115,28 +114,11 @@ function displayCaps(chapElem){
 				},false);
 			}
             
-		current.track.addEventListener("cuechange",
-			function(e) {
-                let chapterCue = e.target.activeCues[0].text;
-                const langElem = document.getElementById('selected');
-                langElem.textContent = chapterCue;
-				//let chapterCue = e.target.activeCues[0].startTime;
-                
-				/*if (chapterCue = document.getElementById(currentLocation)) {
-					var locations = [].slice.call(document.querySelectorAll("#chapters li"));
-					for (var i = 0; i < locations.length; ++i) { 
-						locations[i].classList.remove("current");
-					}
-					chapter.classList.add("current");
-					locationList.style.top = "-"+chapter.parentNode.offsetTop+"px";
-				}*/
-			},false);
-		}
+		current.track.addEventListener("cuechange", switchCaps, false);
 	}
-}
+};
 
-function displayCapts(vidSrc, trackLang){
-
+function displayCapts(vidSrc, trackLang) {
 	if (trackLang){
         const textTrack = trackLang.track;
 		textTrack.mode = 'hidden';
@@ -168,10 +150,10 @@ function displayCapts(vidSrc, trackLang){
 					chapter.classList.add("current");
 					locationList.style.top = "-"+chapter.parentNode.offsetTop+"px";
 				}
-			},false); 
-		}*/
+			},false); */
+		}
 	}
-}
+};
 
 function subtitleAttention() { // pop-up to let user know they can change the sub/captions language from English to Chinese
     let pop = document.querySelector(".pop");
@@ -191,17 +173,7 @@ function subtitleAttention() { // pop-up to let user know they can change the su
     setTimeout(() => {
         pop.classList.toggle("styles");
     }, 7000);
-}
-
-function learnChinese() { //links to where to learn chinese
-    document.querySelector("#web").src =
-        "https://www.cmuse.org/learn-chinese-lessons-online/";
-}
-
-function eastBayChineseSchool() { // about the Saturday school
-    document.querySelector("#web").src =
-        "http://www.ebchinese.org";
-}
+};
 
 function activateDropdown(e) {
     //creating target var
@@ -209,9 +181,10 @@ function activateDropdown(e) {
     // changing target & nav elem class lists
     target.classList.toggle('hide');
     target.nextElementSibling.classList.toggle('hidden');
-}
+};
 
-function smithEastAsianLang() { // about my college classes
-    document.querySelector("#web").src =
-        "https://www.smith.edu/academics/east-asian-languages-cultures";
-}
+function switchCaps(e) {
+    let chapterCue = e.target.activeCues[0].text;
+    const langElem = document.getElementById('selected');
+    langElem.textContent = chapterCue;
+};

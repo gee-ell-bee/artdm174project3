@@ -135,12 +135,6 @@ section.captions #other {
     width: 90%;
 }
 
-iframe {
-	width: 100%;
-	height:25vh;
-    overflow: scroll;
-}
-
 footer {
     margin: 6vw 4vw;
     border: 1px solid rgba(0, 0, 0, 0);
