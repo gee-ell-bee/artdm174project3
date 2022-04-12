@@ -31,6 +31,10 @@ body {
     -webkit-font-smoothing: antialiased;
     font-size: clamp(16px, 1.5vw, 20px);
     font-family:Arial, Helvetica, sans-serif;
+
+    /* variables */
+    --controlsBgColor: rgba(255, 255, 255, .3);
+    --controlsBorder: 1px solid rgba(0, 0, 0, .4);
 }
 
 img,
@@ -95,17 +99,8 @@ video#vid {
     background-color:rgba(178, 34, 34, 0.927); /* brick red */
 }
 
-footer {
-    margin: 6vw 4vw;
-    border: 1px solid rgba(0, 0, 0, 0);
-    font-family: 'Trebuchet MS', Verdana, sans-serif;
-}
-
-footer nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    padding: 0;
+section.video {
+    position: relative;
 }
 
 /* section.captions {
@@ -144,9 +139,22 @@ iframe {
     overflow: scroll;
 }
 
+footer {
+    margin: 6vw 4vw;
+    border: 1px solid rgba(0, 0, 0, 0);
+    font-family: 'Trebuchet MS', Verdana, sans-serif;
+}
+
+footer nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+
 /* #endregion */
 
-/* #region MOBILE text */
+/* #region MOBILE text & styling */
 a {
     color: rgb(134, 85, 0);
     text-decoration-color:rgba(134, 85, 0, .4);
@@ -161,6 +169,30 @@ h1 {
     text-align: center;
 }
 
+.pop {
+	position:absolute;
+	bottom: 10%;
+	right:10px;
+	padding:15px;
+	font-weight:bold;
+	z-index:3;
+    opacity: 1;
+    transition: all .1s;
+}
+
+.styles {
+    animation: 1s ease-out 0s 1 backwards fadeIn;
+	background:rgba(99, 77, 55, .5);
+	border:3px solid red;
+	color:#fff;
+}
+
+.pop.hide {
+    opacity:0;
+    pointer-events: none;
+    transition: all 5s;
+}
+
 ::cue {
     position: absolute;
     left: 0;
@@ -171,9 +203,17 @@ h1 {
     font-family: sans-serif;
     color: white;
     text-shadow: black 1px 1px 3px;
-    font-size: 2vw;
+    font-size: clamp(16px, 2vw, 20px);
     padding: 1rem;
     background-color:rgba(86, 86, 86, 0.546);
+}
+
+input:active {
+    opacity: .5;
+}
+
+input.active {
+    opacity: .8;
 }
 
 footer h2 {
@@ -185,7 +225,35 @@ footer h2 {
 
 /* #endregion */
 
-/* #region animations */
+/* #region MOBILE video controls */
+
+#rw, #ff, #restart {
+    border: var(--controlsBorder);
+    width: clamp(30px, 5vw, 50px);
+    height: clamp(30px, 5vw, 50px);
+}
+
+#switch {
+    border: var(--controlsBorder);
+    height: clamp(30px, 5vw, 50px);
+    background: var(--controlsBgColor);
+}
+
+#rw {
+    background: var(--controlsBgColor) url(../img/rewind-button.png) no-repeat center/cover;
+}
+
+#ff {
+    background: var(--controlsBgColor) url(../img/fast-forward-button.png) no-repeat center/cover;
+}
+
+#restart {
+    background: var(--controlsBgColor) url(../img/restart-button.svg) no-repeat center/cover;
+}
+
+/* #endregion */
+
+/* #region MOBILE animations */
 .hidden {
     animation:.25s .25s 1 ease-in forwards hiding;
 }

@@ -51,17 +51,20 @@
      document.getElementById("unmute").disabled = true;
  }
 
- function onFinished(clip) 
- {
-     clip.currentTime = 0;
- }
-
  // rate can be a positive integer
  // .5 is half speed, 1 is normal speed,
  // 2 is double speed, etc.
  //Only Safari supports negative values (backwards)
  function playRate(clip, rate) 
  {
-     clip.playbackRate = rate;
+     if(clip.playbackRate != rate) {
+         clip.playbackRate = rate;
+     }
+     else {
+         clip.playbackRate = 1;
+     }
+     if(clip.paused = "true") {
+         clip.play();
+     }
  }
 
