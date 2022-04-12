@@ -210,14 +210,6 @@ h1 {
     background-color:rgba(86, 86, 86, 0.546);
 }
 
-input:active {
-    opacity: .5;
-}
-
-input.active {
-    opacity: .8;
-}
-
 footer h2 {
     margin: 0;
     padding: 0;
@@ -240,13 +232,38 @@ footer h2.hide::after {
 
 /* #region MOBILE video controls */
 
+#buttons {
+    display: flex;
+    justify-content: space-around;
+}
+input:active {
+    opacity: .5;
+}
+
+input.active {
+    opacity: .8;
+}
+
 #rw, #ff, #restart {
     border: var(--controlsBorder);
     width: clamp(30px, 5vw, 50px);
     height: clamp(30px, 5vw, 50px);
 }
 
-#switch {
+#chapterOl {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#chapterOl li {
+    margin: 1vw;
+    padding: 2vw;
+    display: flex;
+    align-items: center;
+}
+
+#switch, #chapterOl li {
     border: var(--controlsBorder);
     height: clamp(30px, 5vw, 50px);
     background: var(--controlsBgColor);

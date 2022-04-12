@@ -1,6 +1,6 @@
 // activate footer
 //create vars
-const footer = document.querySelector('footer');
+const footer = document.querySelector('#foothead');
 const controls = document.querySelector('#controls');
 
 //append event listener to footer
@@ -15,6 +15,7 @@ let docFrag = new DocumentFragment();
 let langSection = document.querySelector('#caps');
 //differentiate between each section
 const langList = ['selected', 'other'];
+const chapterTrack = document.querySelector('#chapters');
 
 
 
@@ -22,10 +23,47 @@ const langList = ['selected', 'other'];
 langList.forEach(function(lang) {
     let section = document.createElement('section');
     section.classList.add('lang');
-    section.id = lang;
+    section.setAttribute('id', lang);
     docFrag.appendChild(section);
     console.log({vid});
 });
+
+function displayChapters(chapElem){
+	if (chapElem){
+        const textTrack = chapElem.track;
+		if (textTrack.kind === "chapters"){
+			textTrack.mode = 'hidden';
+			for (var i = 0; i < textTrack.cues.length; ++i) {
+                let chapterList = document.querySelector('#chapterOl');
+				let cue = textTrack.cues[i];
+				let chapterName = cue.text;
+				let start = cue.startTime;
+				const newChapter = document.createElement("li");
+				newChapter.setAttribute('id', start);
+				var chapterTitle = document.createTextNode(cue.text);
+				newChapter.appendChild(chapterTitle);
+				chapterList.appendChild(newChapter);
+				newChapter.addEventListener("click",
+				function() {
+					vid.currentTime = this.id;
+                    vid.play();
+				},false);
+			}
+		textTrack.addEventListener("cuechange",
+			function() {
+				var currentLocation = this.activeCues[0].startTime;
+				if (chapter = document.getElementById(currentLocation)) {
+					var locations = [].slice.call(document.querySelectorAll("#chapters li"));
+					for (var i = 0; i < locations.length; ++i) { 
+						locations[i].classList.remove("current");
+					}
+					chapter.classList.add("current");
+					locationList.style.top = "-"+chapter.parentNode.offsetTop+"px";
+				}
+			},false);
+		}
+	}
+}
 
 /* by Troy Bennett 7-2010 (updated 12-2021) */
 import { cueTimer } from "./modules/cuepoints.js";
@@ -40,7 +78,11 @@ function init() {
             langSection.classList.add('show');
             //append langSection to document fragment
             langSection.appendChild(docFrag);
+        
+        displayChapters(chapterTrack);
+        
         };
+
     });
     
     var myVidCues = [

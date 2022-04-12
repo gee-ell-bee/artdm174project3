@@ -1,7 +1,7 @@
 /** clipeo_helpers.js
  *  
  * Helper functions for controlling the clipeo element.
- * by Troy Bennett 7-2010
+ * by Troy Bennett 7-2010 & Grey Larrain Bratt 2022
  *
  */
 

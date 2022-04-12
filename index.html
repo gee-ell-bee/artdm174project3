@@ -29,7 +29,7 @@
                     src="cap/redubbed_eng_subs.vtt" default>
                 <track label="中文 - 繁體" kind="captions" srclang="zh"
                     src="cap/redubbed_chtrad_caps.vtt">
-                <track label="Chapters" kind="chapters" srclang="en" default
+                <track id="chapters" label="Chapters" default kind="chapters" srclang="en"
                     src="cap/redubbed_chapters.vtt">
                 <track label="Sentences" kind="chapters" srclang="en"
                     src="cap/redubbed_sentences.vtt">
@@ -68,11 +68,12 @@
         <section class="controls">
             <h2 id="controls">Controls</h2>
             <form id="video_form">
-                <fieldset>
+                <fieldset id="buttons">
                     <input type="button" id="restart" onclick="seekVideo(vid, 0)" title="Restart" value="">
-                    <input type="button" id="seek_first_verse" onclick="seekVideo(vid, 265)" value="First Verse">
-                    <input type="button" id="seek" onclick="seekVideo(vid, 188)" value="Go to Bridge">
-                    <input type="button" id="switch" onclick="" title="Switch Between Versions" value="Switch Off">
+                    <input type="button" id="rw" onclick="playRate(vid, -2.5)" title="Rewind" value="&lt;&lt;">
+                    <input type="button" id="ff" onclick="playRate(vid, 2.5)" title="Fast Forward" value="> >">
+                    <ol id="chapterOl">
+                    </ol>
                 </fieldset>
                 <fieldset class="half">
                     <select id="video_select">
@@ -83,12 +84,6 @@
                         <option value="vid/chi_dst_orig.webm">Original (WEBM)</option>
                     </select>
                 </fieldset>
-                <fieldset>
-                    <label>Currently, rewind only works in Safari
-                        <input type="button" id="rw" onclick="playRate(vid, -2.5)" title="Rewind" value="&lt;&lt;">
-                    </label>
-                    <input type="button" id="ff" onclick="playRate(vid, 2.5)" title="Fast Forward" value="> >">
-                </fieldset>
             </form>
         </section>
         <section id="caps" class="captions">
@@ -97,7 +92,7 @@
             <iframe id="web" src="iframe.html"></iframe>
         </section>
         <footer>
-            <h2 class="hide">Find Grey Now</h2>
+            <h2 id="foothead" class="hide">Find Grey Now</h2>
             <nav class="hidden">
                 <ul>
                     <li><a href="https://instagram.com/mrgtbt" title="instagram">i</a></li>
