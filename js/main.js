@@ -82,13 +82,13 @@ function init() {
             langSection.appendChild(docFrag);
         
         };
-
     });
     
     var myVidCues = [
         { seconds: 10, callback: subtitleAttention },
         { seconds: 35, callback: learnChinese },
-        { seconds: 50, callback: jjLin }
+        { seconds: 90, callback: eastBayChineseSchool },
+        { seconds: 170, callback: smithEastAsianLang }
     ];
 
     //activates the cuepoints module
@@ -133,9 +133,9 @@ function learnChinese() { //links to where to learn chinese
         "https://www.cmuse.org/learn-chinese-lessons-online/";
 }
 
-function jjLin() { // about JJ Lin
+function eastBayChineseSchool() { // about the Saturday school
     document.querySelector("#web").src =
-        "https://en.wikipedia.org/wiki/JJ_Lin";
+        "http://www.ebchinese.org";
 }
 
 function activateDropdown(e) {
@@ -144,4 +144,9 @@ function activateDropdown(e) {
     // changing target & nav elem class lists
     target.classList.toggle('hide');
     target.nextElementSibling.classList.toggle('hidden');
+}
+
+function smithEastAsianLang() { // about my college classes
+    document.querySelector("#web").src =
+        "https://www.smith.edu/academics/east-asian-languages-cultures";
 }
