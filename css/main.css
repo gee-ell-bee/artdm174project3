@@ -116,6 +116,10 @@ section.captions.show {
     margin: 1vw auto 7vw auto;
 }
 
+section.captions #other.show, section.captions #selected.show {
+    display: block;
+}
+
 section.captions section.lang {
     background-color:rgba(0, 0, 0, .2);
     padding: 5vw;

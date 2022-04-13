@@ -9,13 +9,7 @@ const vid = document.querySelector('#vid');
 let docFrag = new DocumentFragment();
 let langSection = document.querySelector('#caps');
 //differentiate between each section
-const langList = ['en', 'zh'];
-
-const redubChapterTrack = document.querySelector('#redubChapters');
-
-
-
-
+const langElemList = ['selected', 'option'];
 
 /* by Troy Bennett 7-2010 (updated 12-2021) */
 import { cueTimer } from "./modules/cuepoints.js";
@@ -30,35 +24,33 @@ function init() {
     /* NOT WORKING */controls.addEventListener('click', activateDropdown);
 
     // function to make each language section
-        langList.forEach(function(lang) {
+        langElemList.forEach(function(lang) {
             let section = document.createElement('section');
             section.classList.add('lang');
-            section.setAttribute('id', lang);
+            section.id = lang;
             docFrag.appendChild(section);
-            console.log({vid});
+            console.log({section});
         });
+            //append langSection to document fragment
+            langSection.appendChild(docFrag);
 
-    // language track variables
-    let engLang = document.getElementById('en');
-    let chiLang = document.getElementById('zh');
-
-
-
-    // add chapter links
-    displayCaps(redubChapterTrack);
+    const selected = document.getElementById('#selected');
+    const other = document.getElementById('#other');
 
     // show the language HTML sections
     vid.addEventListener('play', () => {
         if(!langSection.classList.contains('show')) {
             langSection.classList.add('show');
-            //append langSection to document fragment
-            langSection.appendChild(docFrag);
         };
+
+        
+        // add captions to 
+        displayCaps(selected);
     });
     
     // defining iFrame cues
     var myVidCues = [
-        { seconds: 10, callback: subtitleAttention }
+        { seconds: 4, callback: subtitleAttention }
     ];
 
     //activates the cuepoints module
@@ -66,55 +58,45 @@ function init() {
 
     //shortcut variables
     const selectList = document.querySelector("#video_select");
-    const selectOpts = selectList.querySelectorAll('option');
-    selectOpts.forEach(source => {
+    const selectOpts = selectList.querySelectorAll('OPTION');
+    /*selectOpts.forEach(function(source) {
         let srcType = source.value;
-        /*if(srcType = type) {
-        };*/
         let supported = vid.canPlayType(srcType);
-        console.log(srcType);
-        if(supported === "") {
-            source.hidden = "true";
+        if(supported === '') {
+            source.hidden = true;
         }
-
-    }
-
-    );
+    }, selectOpts); */
 
     // make the select list control what video format to play
     selectList.addEventListener("change", (e) => {
         selectMedia(e, vid);
     });
-}
+};
 
 
 /* adapted from Rex Barkdoll's "HTML5 Video with Chapters"
 / original: http://thenewcode.com/977/Create-Interactive-HTML5-Video-with-WebVTT-Chapters
 / updated source also referenced: https://codepen.io/rexbarkdoll/pen/XWMNwJM */
 // chapters links
-function displayCaps(chapElem){
-	if (chapElem){
-        const textTrack = chapElem.track;
-		if (textTrack.kind === "chapters"){
-			textTrack.mode = 'hidden';
-			for (var i = 0; i < textTrack.cues.length; ++i) {
-                let chapterList = document.querySelector('#chapterOl');
-				let cue = textTrack.cues[i];
-				//let chapterName = cue.text;
-				let start = cue.startTime;
-				const newChapter = document.createElement("li");
-				newChapter.setAttribute('id', start);
-				var chapterTitle = document.createTextNode(cue.text);
-				newChapter.appendChild(chapterTitle);
-				chapterList.appendChild(newChapter);
-				newChapter.addEventListener("click",
-				function() {
-					vid.currentTime = this.id;
-                    vid.play();
-				},false);
-			}
+function displayCaps(cap){
+	if (cap){
+        for (var i = 0; i < cap.cues.length; ++i) {
+            let cue = cap.cues[i];
+            //let chapterName = cue.text;
+            let start = cue.startTime;
+            const newChapter = document.createElement("li");
+            newChapter.setAttribute('id', start);
+            var chapterTitle = document.createTextNode(cue.text);
+            newChapter.appendChild(chapterTitle);
+            chapterList.appendChild(newChapter);
+            newChapter.addEventListener("click",
+            function() {
+                vid.currentTime = this.id;
+                vid.play();
+            },false);
+        }
             
-		current.track.addEventListener("cuechange", switchCaps, false);
+		cap.track.addEventListener("cuechange", switchCaps, false);
 	}
 };
 
@@ -150,8 +132,8 @@ function displayCapts(vidSrc, trackLang) {
 					chapter.classList.add("current");
 					locationList.style.top = "-"+chapter.parentNode.offsetTop+"px";
 				}
-			},false); */
-		}
+			},false); 
+		}*/
 	}
 };
 
@@ -185,6 +167,25 @@ function activateDropdown(e) {
 
 function switchCaps(e) {
     let chapterCue = e.target.activeCues[0].text;
-    const langElem = document.getElementById('selected');
-    langElem.textContent = chapterCue;
+    selected.textContent = chapterCue;
 };
+
+/*function displayChapters(cap){
+	if (cap){
+        for (var i = 0; i < cap.cues.length; ++i) {
+            let cue = cap.cues[i];
+            //let chapterName = cue.text;
+            let start = cue.startTime;
+            const newChapter = document.createElement("li");
+            newChapter.setAttribute('id', start);
+            var chapterTitle = document.createTextNode(cue.text);
+            newChapter.appendChild(chapterTitle);
+            chapterList.appendChild(newChapter);
+            newChapter.addEventListener("click",
+            function() {
+                vid.currentTime = this.id;
+                vid.play();
+            },false);
+        }
+    }
+} */
