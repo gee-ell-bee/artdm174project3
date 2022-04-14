@@ -78,26 +78,16 @@ function init() {
 / original: http://thenewcode.com/977/Create-Interactive-HTML5-Video-with-WebVTT-Chapters
 / updated source also referenced: https://codepen.io/rexbarkdoll/pen/XWMNwJM */
 // chapters links
-function displayCaps(cap){
+function displayCaps(cap, sectElem){
 	if (cap){
-        for (var i = 0; i < cap.cues.length; ++i) {
-            let cue = cap.cues[i];
-            //let chapterName = cue.text;
-            let start = cue.startTime;
-            const newChapter = document.createElement("li");
-            newChapter.setAttribute('id', start);
-            var chapterTitle = document.createTextNode(cue.text);
-            newChapter.appendChild(chapterTitle);
-            chapterList.appendChild(newChapter);
-            newChapter.addEventListener("click",
-            function() {
-                vid.currentTime = this.id;
-                vid.play();
-            },false);
-        }
-            
-		cap.track.addEventListener("cuechange", switchCaps, false);
-	}
+        const textTrack = cap.track;
+        if (textTrack.kind === 'subtitles' || 'captions') {
+            textTrack.addEventListener('cuechange', function(){
+                let cue = textTrack.activeCues[0].text;
+                sectElem.textContent = cue;
+            }, false);
+        };
+    };
 };
 
 function displayCapts(vidSrc, trackLang) {
@@ -120,7 +110,6 @@ function displayCapts(vidSrc, trackLang) {
                     vid.play();
 				},false);
 			}
-            /*
 		textTrack.addEventListener("cuechange",
 			function() {
 				var currentLocation = this.activeCues[0].startTime;
@@ -132,10 +121,59 @@ function displayCapts(vidSrc, trackLang) {
 					chapter.classList.add("current");
 					locationList.style.top = "-"+chapter.parentNode.offsetTop+"px";
 				}
-			},false); 
-		}*/
+			}, false);
 	}
 };
+
+/* by Troy Bennett 7-2010 (updated 12-2021)
+import { cueTimer } from "./modules/cuepoints.js";
+
+document.addEventListener("DOMContentLoaded", init);
+
+//end by Troy Bennett */
+
+/*
+function init() {
+    
+    // add chapter links
+    displayChapters(redubChapterTrack);
+
+    // show the language HTML sections
+    vid.addEventListener('play', () => {
+        if(!langSection.classList.contains('show')) {
+            langSection.classList.add('show');
+            //append langSection to document fragment
+            langSection.appendChild(docFrag);
+        
+        };
+    });
+    
+    // defining iFrame cues
+    var myVidCues = [
+        { seconds: 10, callback: subtitleAttention },
+        { seconds: 35, callback: learnChinese },
+        { seconds: 90, callback: eastBayChineseSchool },
+        { seconds: 170, callback: smithEastAsianLang }
+    ];
+
+    //activates the cuepoints module
+    cueTimer.setup("vid", myVidCues);
+
+    //shortcut variables
+    const selectList = document.querySelector("#video_select");
+
+    // make the select list control what video format to play
+    selectList.addEventListener("change", (e) => {
+        selectMedia(e, vid);
+    });
+    
+    //vid event listener to pause when seeking
+    vid.addEventListener('seeking', (e) => {
+        vid.pause();
+    });
+}
+
+    */
 
 function subtitleAttention() { // pop-up to let user know they can change the sub/captions language from English to Chinese
     let pop = document.querySelector(".pop");
