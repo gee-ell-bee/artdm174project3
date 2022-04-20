@@ -1,12 +1,8 @@
 import { cueTimer } from "./modules/cuepoints.js"; // by Troy Bennett 7-2010 (updated 12-2021)
 
-// activate footer
 //create vars
 const footer = document.querySelector('footer');
 const controls = document.querySelector('#controls');
-
-// adding text track to HTML section
-//create vars
 const vid = document.querySelector('#vid');
 //differentiate between caps
 const engSubs = document.getElementById('eng_subs');
@@ -32,13 +28,6 @@ function init() {
     //shortcut variables
     const selectList = document.querySelector('#video_select');
     const selectOpts = selectList.querySelectorAll('OPTION');
-    /*selectOpts.forEach(function(source) {
-        let srcType = source.value;
-        let supported = vid.canPlayType(srcType);
-        if(supported === '') {
-            source.hidden = true;
-        }
-    }, selectOpts); */
 
     // make the select list control what video format to play
     selectList.addEventListener('change', (e) => {

@@ -17,7 +17,7 @@
             <h1>Learning Chinese</h1>
         </header>
         <div class="articleBody">
-            
+
         <section class="video">
             <div class="pop hide">
                 <p></p>
@@ -67,8 +67,8 @@
         </section>
 
         <section class="controls">
-            <h2 id="controls">Controls</h2>
-            <form id="video_form">
+            <h2 id="controls" class="hide">Controls</h2>
+            <form id="video_form" class="hidden">
                 <fieldset>
                     <input type="button" id="restart" onclick="seekVideo(vid, 0)" title="Restart" value="">
                     <input type="button" id="seek_first_verse" onclick="seekVideo(vid, 265)" value="First Verse">
@@ -89,9 +89,6 @@
                     <input type="button" id="ff" onclick="playRate(vid, 2.5)" title="Fast Forward" value="> >">
                 </fieldset>
             </form>
-        </section>
-
-        <section id="caps" class="captions">
         </section>
 
         <section class="iframe">
