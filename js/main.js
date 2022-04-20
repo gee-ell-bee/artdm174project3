@@ -4,10 +4,8 @@ import { cueTimer } from "./modules/cuepoints.js"; // by Troy Bennett 7-2010 (up
 //create vars
 const footer = document.querySelector('#foothead');
 const controls = document.querySelector('#controls');
-
-// adding text track to HTML section
-//create vars
 const vid = document.querySelector('#vid');
+let vidSubs = vid.textTracks;
 let langSection = document.querySelector('#langSection');
 //differentiate between caps
 const engSubs = document.getElementById('eng_subs');
@@ -20,24 +18,21 @@ function init() {
     // auto hiding footer
     footer.addEventListener('click', activateDropdown);
     // auto hiding controls
-    /* NOT WORKING */controls.addEventListener('click', activateDropdown);
+    controls.addEventListener('click', activateDropdown);
+
+
+    vidSubs.addEventListener('change', langLoop);
 
     // show the language HTML sections
     vid.addEventListener('play', () => {
+        // show captions section if not already showing
         if(!langSection.classList.contains('show')) {
             langSection.classList.add('show');
         };
 
-        // add captions
-        displayCaps(engSubs);
+        langLoop();
     });
 
-    vid.textTracks.addEventListener('change', (e) => {
-        let newLang = e.target.value;
-        console.log('event listener ', e, newLang);
-        displayCaps(newLang);
-    })
-    
     // defining iFrame cues
     var myVidCues = [
         { seconds: 4, callback: subtitleAttention }
@@ -48,28 +43,24 @@ function init() {
 
     //shortcut variables
     const selectList = document.querySelector('#video_select');
-    const selectOpts = selectList.querySelectorAll('OPTION');
-    /*selectOpts.forEach(function(source) {
-        let srcType = source.value;
-        let supported = vid.canPlayType(srcType);
-        if(supported === '') {
-            source.hidden = true;
-        }
-    }, selectOpts); */
 
-    // make the select list control what video format to play
+    // make the select list control what video to play
     selectList.addEventListener('change', (e) => {
+        // create vars
         const target = e.target.value;
         const mp4 = document.getElementById('mp4');
         const webm = document.getElementById('webm');
+        // create array of all #vid's tracks
         let sources = [mp4, webm, engSubs, chiCaps, sentences];
+        // array loop to change src values
         for (let i = 0; i < sources.length; i++) {
-            const name = sources[i].id;
+            const idName = sources[i].id;
+            // if source is video track
             if (sources[i].type) {
-                sources[i].src = 'vid/' + target + '.' + name;
+                sources[i].src = 'vid/' + target + '.' + idName;
             }
-            else {
-                sources[i].src = 'cap/' + target + '_' + name + '.vtt';
+            else { // if source is text track
+                sources[i].src = 'cap/' + target + '_' + idName + '.vtt';
             };
         };
         selectVideo(e, vid);
@@ -80,19 +71,41 @@ function init() {
 /* adapted from Rex Barkdoll's "HTML5 Video with Chapters"
 / original: http://thenewcode.com/977/Create-Interactive-HTML5-Video-with-WebVTT-Chapters
 / updated source also referenced: https://codepen.io/rexbarkdoll/pen/XWMNwJM */
-// chapters links
+// place track's active cues in HTML captions section
 function displayCaps(chosenCap){
-	if (chosenCap) {
-        let selectedTextTrack = chosenCap.track;
-        if (selectedTextTrack.kind !== 'chapters') {
-            let selectedCue = selectedTextTrack.activeCues[0].text;
-            langSection.textContent = selectedCue;
-            selectedTextTrack.addEventListener('cuechange', function(){
-                selectedCue = selectedTextTrack.activeCues[0].text;
-                langSection.textContent = selectedCue;
-            }, false);
+    // get text track's active cues
+    let chosenCue = chosenCap.activeCues[0].text;
+    //place active cues in HTML captions section
+    langSection.textContent = chosenCue;
+    // when active cues change, replace with new cues
+    chosenCap.addEventListener('cuechange', () => {
+        chosenCue = chosenCap.activeCues[0].text;
+        langSection.textContent = chosenCue;
+    }, false);
+
+/* TO REACTIVATE, MAKE changeCue FUNCTION WITH EVENT LISTENER F(X) ABOVE ^^
+
+    // remove cuechange event when text track changes
+    vidSubs.addEventListener('change', () => {
+        chosenCap.removeEventListener('cuechange', changeCue, false);
+        // logging caps to remove
+        console.log('to remove EL: ', chosenCap);
+    },
+    // should run before other event listeners
+    {capture: true}); */
+};
+
+function langLoop() {
+    // loop through all text tracks
+    for (let i = 0; i < vidSubs.length; i++) {
+        // if active track, place active cues in HTML captions section
+        if(vidSubs[i].mode == 'showing') {
+            displayCaps(vidSubs[i]);
         };
     };
+};
+
+function changeCue() {
 };
 
 
