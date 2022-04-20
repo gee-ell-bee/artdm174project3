@@ -103,42 +103,6 @@ section.video {
     position: relative;
 }
 
-/* section.captions {
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    align-items: center;
-    grid-gap: 2vw;
-    height: 20vh;
-    margin: 1vw auto 7vw auto;
-}
-
-section.captions section.lang {
-    background-color:rgba(0, 0, 0, .2);
-    padding: 5vw;
-    display: flex;
-    align-items: center;
-    height:100%;
-}
-
-section.captions #selectedLang {
-    flex-basis: 60%;
-    width: 100%;
-}
-
-section.captions #otherLang {
-    opacity: .6;
-    flex-basis: 40%;
-    width: 90%;
-} */
-
-iframe {
-	width: 100%;
-	/*height:25vh;*/
-    height: 50vh;
-    overflow: scroll;
-}
-
 footer {
     margin: 6vw 4vw;
     border: 1px solid rgba(0, 0, 0, 0);

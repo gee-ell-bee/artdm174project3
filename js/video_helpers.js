@@ -6,14 +6,13 @@
  */
 
 
- function selectMedia(e, clip) 
+ function selectVideo(e, clip) 
  {
-     clip.src = e.target.value;
      clip.load();
-     playVideo(clip);
+     //playVideo(clip);
  }
 
- function playMedia(clip) 
+ function playVideo(clip) 
  {
      clip.play();
  }
