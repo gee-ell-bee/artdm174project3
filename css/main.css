@@ -105,39 +105,30 @@ section.video {
 
 section.captions {
     display: flex;
-    flex-direction: column;
     justify-content: stretch;
-    align-items: center;
+    
+    text-align: center;
     grid-gap: 2vw;
 }
 
 section.captions.show {
-    height: 20vh;
+    height: 4rem;
+    background-color:rgba(0, 0, 0, .2);
+    padding: 5vw;
     margin: 1vw auto 7vw auto;
 }
 
-section.captions #other.show, section.captions #selected.show {
-    display: block;
-}
-
-section.captions section.lang {
-    background-color:rgba(0, 0, 0, .2);
-    padding: 5vw;
-    display: flex;
-    align-items: center;
-    height:100%;
-}
-
-section.captions #selected {
+/* if can get the other text track:
+section.captions.show #selected {
     flex-basis: 60%;
     width: 100%;
 }
 
-section.captions #other {
+section.captions.show #other {
     opacity: .6;
     flex-basis: 40%;
     width: 90%;
-}
+} */
 
 footer {
     margin: 6vw 4vw;

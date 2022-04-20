@@ -23,17 +23,17 @@
             </div>
             <video id="vid" controls>
 
-                <source src="vid/chi_dst_redubbed.mp4" type="video/mp4">
-                <source src="vid/chi_dst_redubbed.webm" type="video/webm">
-<!--                <source src="vid/chi_dst_orig.mp4" type="video/mp4">
-                <source src="vid/chi_dst_orig.webm" type="video/webm">
+                <source id="mp4" src="vid/redubbed.mp4" type="video/mp4">
+                <source id="webm" src="vid/redubbed.webm" type="video/webm">
+<!--                <source src="vid/orig.mp4" type="video/mp4">
+                <source src="vid/orig.webm" type="video/webm">
 -->
 
-                <track label="English &lbrack;Subtitles&rbrack;" kind="subtitles" label="On" srclang="en"
+                <track id="eng_subs" label="English &lbrack;Subtitles&rbrack;" kind="subtitles" label="On" srclang="en"
                     src="cap/redubbed_eng_subs.vtt" default>
-                <track label="中文 - 繁體" kind="captions" srclang="zh"
+                <track id="chtrad_caps" label="中文 - 繁體" kind="captions" srclang="zh"
                     src="cap/redubbed_chtrad_caps.vtt">
-                <track label="Sentences" kind="chapters" srclang="en"
+                <track id="sentences" label="Sentences" kind="chapters" srclang="en"
                     src="cap/redubbed_sentences.vtt">
 
 <!--                <track label="English &lbrack;Subtitles&rbrack;" kind="subtitles" label="On" srclang="en"
@@ -91,16 +91,14 @@
                 <fieldset class="half">
                     <select id="video_select">
                         <option>Select a video to play...</option>
-                        <option value="vid/chi_dst_redubbed.mp4">Redubbed (MP4)</option>
-                        <option value="vid/chi_dst_redubbed.webm">Redubbed (WEBM)</option>
-                        <option value="vid/chi_dst_orig.mp4">Original (MP4)</option>
-                        <option value="vid/chi_dst_orig.webm">Original (WEBM)</option>
+                        <option value="redubbed">Redubbed (2022)</option>
+                        <option value="orig">Original (2017)</option>
                     </select>
                 </fieldset>
             </form>
         </section>
 
-        <section id="caps" class="captions">
+        <section id="langSection" class="captions">
         </section>
 
         <footer>
