@@ -2,7 +2,6 @@ import { cueTimer } from "./modules/cuepoints.js"; // by Troy Bennett 7-2010 (up
 
 //create vars
 const footer = document.querySelector('footer');
-const controls = document.querySelector('#controls');
 const vid = document.querySelector('#vid');
 //differentiate between caps
 const engSubs = document.getElementById('eng_subs');
@@ -17,8 +16,6 @@ function init() {
     console.log(carrot);
     // auto hiding footer
     footer.addEventListener('click', activateDropdown);
-    // auto hiding controls
-    controls.addEventListener('click', activateDropdown);
     
     // defining iFrame cues
     var myVidCues = [
