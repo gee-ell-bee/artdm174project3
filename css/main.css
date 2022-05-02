@@ -268,37 +268,6 @@ fieldset {
     justify-content: space-evenly;
 }
 
-section#buttons {
-    display: flex;
-    grid-gap: 1vw;
-    margin: auto 3vw auto auto;
-}
-
-#rw, #ff, #restart {
-    border: var(--controlsBorder);
-    width: clamp(30px, 5vw, 50px);
-    height: clamp(30px, 5vw, 50px);
-}
-
-/* vestige of switch between videos button
-#switch {
-    border: var(--controlsBorder);
-    height: clamp(30px, 5vw, 50px);
-    background: var(--controlsBgColor);
-}*/
-
-#rw {
-    background: var(--controlsBgColor) url(../img/rw.png) no-repeat 45%/var(--controlsImgSize);
-}
-
-#ff {
-    background: var(--controlsBgColor) url(../img/ff.png) no-repeat 55%/var(--controlsImgSize);
-}
-
-#restart {
-    background: var(--controlsBgColor) url(../img/rst.png) no-repeat center/var(--controlsImgSize);
-}
-
 #video_select {
     width: 100%;
 }
