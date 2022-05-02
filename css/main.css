@@ -26,15 +26,36 @@ body {
 }
 
 body {
-    background-color:blanchedalmond;
+    background-color: var(--bodyBgColor);
+    color: var(--bodyTextColor);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     font-size: clamp(16px, 1.5vw, 20px);
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
-    /* variables */
-    --controlsBgColor: rgba(255, 255, 255, .3);
-    --controlsBorder: 1px solid rgba(0, 0, 0, .4);
+    /* #region Variables */
+        /* main */
+        --bodyBgColor: blanchedalmond;
+        --bodyTextColor: #000000;
+        --timeTextColor: rgba(0, 0, 0, .7); /* should match body text color but decrease opacity */
+        --bodyLinkColor: rgb(134, 85, 0);
+        --bodyLinkUnderlineColor: rgba(134, 85, 0, .4);
+        --articleBgColor: lightblue;
+
+        /* accents */
+        --accentBorderColor: rgba(178, 34, 34, 1);
+
+
+        /* video-specific */
+        --popupBorderColor: rgb(214, 0, 0);
+        --popupBgColor: rgba(99, 77, 55, .7); /* MUST be brightness < 50% */
+
+        --videoBorderColor: floralwhite;
+
+        --controlsBgColor: rgba(255, 255, 255, .3);
+        --controlsBorder: 1px solid rgba(0, 0, 0, .4);
+        --controlsImgSize: 65%;
+    /* #endregion */
 }
 
 img,
@@ -83,10 +104,10 @@ header {
     margin: 1.25rem auto auto auto;
 }
 
-.articleBody {
-    border-top: solid .35rem rgba(178, 34, 34, 1);
+article {
+    border-top: solid .35rem var(--accentBorderColor);
     padding: 3vw 3vw 7vw 3vw;
-    background-color:lightblue;
+    background-color: var(--articleBgColor);
     margin-bottom: 4vw;
 }
 
@@ -96,11 +117,27 @@ section#intro {
 
 video#vid {
     padding: 5vw;
-    background-color:rgba(178, 34, 34, 0.927); /* brick red */
 }
 
 section.video {
     position: relative;
+}
+
+section.video section.fallback {
+    padding: 1vw;
+}
+
+section.video section.fallback h2 {
+    margin: 2vw;
+    text-align: center;
+}
+
+section.video section.fallback p:first-of-type {
+    margin: 2vw 2vw 4vw 2vw;
+}
+
+section.video section.fallback p {
+    margin: 4vw 2vw;
 }
 
 footer {
@@ -120,40 +157,74 @@ footer nav ul {
 
 /* #region MOBILE text & styling */
 a {
-    color: rgb(134, 85, 0);
-    text-decoration-color:rgba(134, 85, 0, .4);
+    color: var(--bodyLinkColor);
+    text-decoration-color: var(--bodyLinkUnderlineColor);
 }
 
 nav a {
     font-style: italic;
 }
 
-h1 {
-    font-size: 1.8rem;
+header h1 {
+    font-size: clamp(2.5rem, 4.5vw, 3rem);
     text-align: center;
+}
+
+section.video section.fallback h2 {
+    font-size: clamp(1.75rem, 3vw, 2rem);
+}
+
+section.video section.fallback p.first:first-letter {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: normal;
+}
+
+section.video section.fallback p.first:first-line {
+    text-transform: uppercase;
+    line-height: normal;
+}
+
+section.video section.fallback time {
+    display: block;
+    font-size: .85rem;
+    margin: 4vw 2vw 5vw 2vw;
+    color: var(--timeTextColor);
+    text-align: right;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+div.border {
+    border: 5vw solid var(--accentBorderColor);
+    background-color:var(--videoBorderColor);
 }
 
 .pop {
 	position:absolute;
-	bottom: 10%;
+    pointer-events: none;
+	bottom: 20%;
+    max-width: 13em;
 	right:10px;
 	padding:15px;
 	font-weight:bold;
 	z-index:3;
     opacity: 1;
-    transition: all .1s;
+    transition: all .5s;
 }
 
 .styles {
     animation: 1s ease-out 0s 1 backwards fadeIn;
-	background:rgba(99, 77, 55, .5);
-	border:3px solid red;
+	background: var(--popupBgColor);
+	border:3px solid var(--popupBorderColor);
 	color:#fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
 }
 
 .pop.hide {
     opacity:0;
-    pointer-events: none;
     transition: all 5s;
 }
 
@@ -191,28 +262,45 @@ footer h2 {
 
 /* #region MOBILE video controls */
 
+fieldset {
+    border: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+section#buttons {
+    display: flex;
+    grid-gap: 1vw;
+    margin: auto 3vw auto auto;
+}
+
 #rw, #ff, #restart {
     border: var(--controlsBorder);
     width: clamp(30px, 5vw, 50px);
     height: clamp(30px, 5vw, 50px);
 }
 
+/* vestige of switch between videos button
 #switch {
     border: var(--controlsBorder);
     height: clamp(30px, 5vw, 50px);
     background: var(--controlsBgColor);
-}
+}*/
 
 #rw {
-    background: var(--controlsBgColor) url(../img/rewind-button.png) no-repeat center/cover;
+    background: var(--controlsBgColor) url(../img/rw.png) no-repeat 45%/var(--controlsImgSize);
 }
 
 #ff {
-    background: var(--controlsBgColor) url(../img/fast-forward-button.png) no-repeat center/cover;
+    background: var(--controlsBgColor) url(../img/ff.png) no-repeat 55%/var(--controlsImgSize);
 }
 
 #restart {
-    background: var(--controlsBgColor) url(../img/restart-button.svg) no-repeat center/cover;
+    background: var(--controlsBgColor) url(../img/rst.png) no-repeat center/var(--controlsImgSize);
+}
+
+#video_select {
+    width: 100%;
 }
 
 /* #endregion */

@@ -16,13 +16,15 @@
         <header>
             <h1>Learning Chinese</h1>
         </header>
-        <div class="articleBody">
+        <article>
+
 
         <section class="video">
+            <div class="border">
             <div class="pop hide">
                 <p></p>
             </div>
-            <video id="vid" controls>
+            <video id="vid" controls poster="img/cover.jpg">
 
                 <source id="mp4" src="vid/redubbed.mp4" type="video/mp4">
                 <source id="webm" src="vid/redubbed.webm" type="video/webm">
@@ -35,47 +37,52 @@
                     src="cap/redubbed_sentences.vtt">
 
                 <!-- final fallback to text -->
-                <h2>Grey's Chinese Journey</h2>
-                <p>I'm a college sophomore and first-year Chinese student, but I started learning Chinese at the age
-                    of four. Not only are my mom and dad, my dad's parents, and my mom's parents all not Chinese,
-                    but there's also not a single Chinese person in my immediate family.</p>
+                <section class="fallback">
+                    <h2>Grey's Chinese Journey</h2>
+                    <p class="first">I'm a college soph&shy;omore and first-year Chinese student, but I started learning Chinese at the age
+                        of four. Not only are my mom and dad, my dad's parents, and my mom's parents all not Chinese,
+                        but there's also not a single Chinese person in my im&shy;mediate family.</p>
 
-                <p>My mom told me that when I was three years old I asked them, "Why don't I take Chinese classes?"
-                    And they said, "Because we're not Chinese." Then I said, "But my best friend takes Chinese
-                    classes!" And my parents told me, "That's because <em>she's</em> Chinese."</p>
+                    <p>My mom told me that when I was three years old I asked them, "Why don't I take Chinese classes?"
+                        And they said, "Be&shy;cause we're not Chinese." Then I said, "But my best friend takes Chinese
+                        classes!" And my parents told me, "That's because <em>she's</em> Chinese."</p>
 
-                <p>I asked them every day to let me take Chinese classes, and several months later, they agreed. A
-                    few years later, my best friend moved away and I couldn't see her anymore, but I still continued
-                    to take Chinese classes.</p>
+                    <p>I asked them every day to let me take Chinese classes, and several months later, they agreed. A
+                        few years later, my best friend moved away and I couldn't see her anymore, but I still con&shy;tinued
+                        to take Chinese classes.</p>
 
-                <p>When I was six I started going to a Saturday school, called East Bay Chinese School. At first, I
-                    didn't know a single person there. I was so nervous! The classes got harder and harder, and I
-                    didn't know anyone outside of class who spoke Chinese so I had no way to practice. Because it
-                    was so hard for me, my dad started to learn with me. He helped me with Chinese even while he was
-                    working. He's a really great dad! We would practice together every week.</p>
+                    <p>When I was six I started going to a Sat&shy;urday school, called East Bay Chinese School. At first, I
+                        didn't know a single person there. I was so nervous! The classes got harder and harder, and I
+                        didn't know anyone outside of class who spoke Chinese so I had no way to practice. Because it
+                        was so hard for me, my dad started to learn with me. He helped me with Chinese even while he was
+                        working. He's a really great dad! We would practice to&shy;gether every week.</p>
 
-                <p>But my dad wasn't actually a student, so around the time I was taking second-year and third-year
-                    Chinese the classes were a lot harder than the first year and he didn't have the time to help me
-                    anymore. From that point on I only practiced one or two hours a week, and as I grew up I got
-                    even busier. After every test, I forgot all the vocabulary and grammar I had learned.</p>
+                    <p>But my dad wasn't actually a student, so around the time I was taking second-year and third-year
+                        Chinese the classes were a lot harder than the first year and he didn't have the time to help me
+                        anymore. From that point on I only prac&shy;ticed one or two hours a week, and as I grew up I got
+                        even busier. After every test, I forgot all the vocab&shy;ulary and grammar I had learned.</p>
 
-                <p>Even though I've been studying Chinese for so many years, before I started taking classes in
-                    college I couldn't speak Chinese very well at all. Well, I still think I don't think my Chinese
-                    is that good, ut this class is really important to me. It inspired me to learn even more, and to
-                    continue learning for the foreseeable future.</p>
+                    <p>Even though I've been studying Chinese for so many years, before I started taking classes in
+                        college I couldn't speak Chinese very well at all. Well, I still think I don't think my Chinese
+                        is that good, but this class is really im&shy;portant to me. It inspired me to learn even more, and to
+                        continue learning for the foreseeable future.</p>
+                    <time datetime="2017-04">April 2017</time>
+                </section>
             </video>
+        </div>
         </section>
 
         <section class="controls">
             <h2 id="controls" class="hide">Controls <span class="carrot"></span></h2>
             <form id="video_form" > <!-- ADD class="hidden" WHEN FINISHED W LAYOUT -->
                 <fieldset>
-                    <input type="button" id="restart" onclick="seekVideo(vid, 0)" title="Restart">
-                    <input type="button" id="ff" onclick="playRate(vid, 2.5)" title="Fast Forward">
-                </fieldset>
-                <fieldset>
+                    <section id="buttons">
+                        <input type="button" id="rw" onclick="playRate(vid, -2.5)" title="Rewind">
+                        <input type="button" id="restart" onclick="seekVideo(vid, 0)" title="Restart">
+                        <input type="button" id="ff" onclick="playRate(vid, 2.5)" title="Fast Forward">
+                    </section>
                     <select id="video_select">
-                        <option>Select a video to play...</option>
+                        <option>Select a video...</option>
                         <option value="redubbed">Redubbed (2022)</option>
                         <option value="orig">Original (2017)</option>
                     </select>
@@ -83,18 +90,18 @@
             </form>
         </section>
 
-        <footer>
-            <h2 class="hide">Find Grey Now</h2>
-            <nav class="hidden">
-                <ul>
-                    <li><a href="https://instagram.com/mrgtbt" title="instagram">i</a></li>
-                    <li><a href="https://grey.gettheball.com" title="portfolio website">p</a></li>
-                    <li><a href="mailto:greybratt@outlook.com" title="email">e</a></li>
-                </ul>
-            </nav>
-        </footer>
+    </article>
 
-    </div>
+    <footer>
+        <h2 class="hide">Find Grey Now</h2>
+        <nav class="hidden">
+            <ul>
+                <li><a href="https://instagram.com/mrgtbt" title="instagram">i</a></li>
+                <li><a href="https://grey.gettheball.com" title="portfolio website">p</a></li>
+                <li><a href="mailto:greybratt@outlook.com" title="email">e</a></li>
+            </ul>
+        </nav>
+    </footer>
     </main>
 </body>
 

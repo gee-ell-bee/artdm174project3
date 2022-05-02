@@ -12,6 +12,9 @@ const sentences = document.getElementById('sentences');
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
+
+    const carrot = document.querySelector('.carrot');
+    console.log(carrot);
     // auto hiding footer
     footer.addEventListener('click', activateDropdown);
     // auto hiding controls
@@ -27,7 +30,6 @@ function init() {
 
     //shortcut variables
     const selectList = document.querySelector('#video_select');
-    const selectOpts = selectList.querySelectorAll('OPTION');
 
     // make the select list control what video format to play
     selectList.addEventListener('change', (e) => {
@@ -52,7 +54,7 @@ function subtitleAttention() { // pop-up to let user know they can change the su
     let pop = document.querySelector(".pop");
 
     // changes to pop
-    //changing style & adding reveal animation
+    // add styles & reveal animation **if natively placed, popup will load and then unload when page starts
     pop.classList.add("styles");
     //changing contents
     pop.innerHTML = "<p>Prefer Chinese subtitles?</p>";
@@ -60,18 +62,13 @@ function subtitleAttention() { // pop-up to let user know they can change the su
     // hiding
     pop.classList.toggle("hide");
     setTimeout(() => {
-        pop.classList.toggle("hide");
+        //pop.classList.toggle("hide");
     }, 2000);
-    // remove styles
-    setTimeout(() => {
-        pop.classList.toggle("styles");
-    }, 7000);
 }
 
 function activateDropdown(e) {
     //creating target var
     const target = e.target;
     // changing target & nav elem class lists
-    target.classList.toggle('hide');
     target.nextElementSibling.classList.toggle('hidden');
 };
