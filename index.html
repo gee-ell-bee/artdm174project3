@@ -5,7 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Grey's Project 3: Rich Media</title>
+    <meta name="author" content="Grey Larrain Bratt">
+    <link rel="icon" href="https://grey.gettheball.com/content/favicon.png" type="photo/png" />
+    
+    <script>
+        (function(d) {
+          var config = {
+            kitId: 'wyz8lmr',
+            scriptTimeout: 3000,
+            async: true
+          },
+          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+    </script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script defer src="js/video_helpers.js"></script>
     <script type="module" src="js/main.js"></script>
@@ -14,88 +28,127 @@
 <body>
     <main>
         <header>
-            <h1>Learning Chinese</h1>
+            <h1>Learn&shy;ing Chinese</h1>
         </header>
-        <article>
-
-
-        <section class="video">
-            <div class="border">
-            <div class="pop hide">
-                <p></p>
-            </div>
-            <video id="vid" controls poster="img/cover.jpg">
-
-                <source id="mp4" src="vid/redubbed.mp4" type="video/mp4">
-                <source id="webm" src="vid/redubbed.webm" type="video/webm">
-
-                <track id="eng_subs" label="English &lbrack;Subtitles&rbrack;" kind="subtitles" label="On" srclang="en"
-                    src="cap/redubbed_eng_subs.vtt" default>
-                <track id="chtrad_caps" label="中文 - 繁體" kind="captions" srclang="zh"
-                    src="cap/redubbed_chtrad_caps.vtt">
-                <track id="sentences" label="Sentences" kind="chapters" srclang="en"
-                    src="cap/redubbed_sentences.vtt">
-
-                <!-- final fallback to text -->
-                <section class="fallback">
-                    <h2>Grey's Chinese Journey</h2>
-                    <p class="first">I'm a college soph&shy;omore and first-year Chinese student, but I started learning Chinese at the age
-                        of four. Not only are my mom and dad, my dad's parents, and my mom's parents all not Chinese,
-                        but there's also not a single Chinese person in my im&shy;mediate family.</p>
-
-                    <p>My mom told me that when I was three years old I asked them, "Why don't I take Chinese classes?"
-                        And they said, "Be&shy;cause we're not Chinese." Then I said, "But my best friend takes Chinese
-                        classes!" And my parents told me, "That's because <em>she's</em> Chinese."</p>
-
-                    <p>I asked them every day to let me take Chinese classes, and several months later, they agreed. A
-                        few years later, my best friend moved away and I couldn't see her anymore, but I still con&shy;tinued
-                        to take Chinese classes.</p>
-
-                    <p>When I was six I started going to a Sat&shy;urday school, called East Bay Chinese School. At first, I
-                        didn't know a single person there. I was so nervous! The classes got harder and harder, and I
-                        didn't know anyone outside of class who spoke Chinese so I had no way to practice. Because it
-                        was so hard for me, my dad started to learn with me. He helped me with Chinese even while he was
-                        working. He's a really great dad! We would practice to&shy;gether every week.</p>
-
-                    <p>But my dad wasn't actually a student, so around the time I was taking second-year and third-year
-                        Chinese the classes were a lot harder than the first year and he didn't have the time to help me
-                        anymore. From that point on I only prac&shy;ticed one or two hours a week, and as I grew up I got
-                        even busier. After every test, I forgot all the vocab&shy;ulary and grammar I had learned.</p>
-
-                    <p>Even though I've been studying Chinese for so many years, before I started taking classes in
-                        college I couldn't speak Chinese very well at all. Well, I still think I don't think my Chinese
-                        is that good, but this class is really im&shy;portant to me. It inspired me to learn even more, and to
-                        continue learning for the foreseeable future.</p>
-                    <time datetime="2017-04">April 2017</time>
+        
+        <div id="container">
+            <article>
+                <section class="intro">
+                    <h1>The Project</h1>
+                    <p>At the end of Grey's first-year Chinese class in college, they created a narrated video telling the story of how they started
+                        learning Chinese. Then five years later, in 2022, they rerecorded the video narration. This project provides both
+                        versions in order to show their progress over time.</p>
                 </section>
-            </video>
+
+                <section class="video">
+                    <div class="border">
+                    <div class="pop hide">
+                        <p></p>
+                    </div>
+                    <video id="vid" controls poster="img/cover.jpg">
+
+                        <source id="mp4" src="vid/redubbed.mp4" type="video/mp4">
+                        <source id="webm" src="vid/redubbed.webm" type="video/webm">
+
+                        <track id="eng_subs" label="English &lbrack;Subtitles&rbrack;" kind="subtitles" label="On" srclang="en"
+                            src="cap/redubbed_eng_subs.vtt" default>
+                        <track id="chtrad_caps" label="中文 - 繁體" kind="captions" srclang="zh"
+                            src="cap/redubbed_chtrad_caps.vtt">
+                        <track id="sentences" label="Sentences" kind="chapters" srclang="en"
+                            src="cap/redubbed_sentences.vtt">
+
+                        <!-- final fallback to text -->
+                        <section class="fallback">
+                            <section class="explanation"><p>Since your device cannot play the video, a transcript of the content in English and then Chinese is provided below.</p></section>
+                            <section class="eng">
+                                <h2>&ldquo;Why Learn Chinese?&rdquo;</h2>
+                                <p class="first">I'm a college soph&shy;omore and first-year Chinese student, but I started learning
+                                    Chinese at the age of four. Not only are my mom and dad, my dad's parents, and my mom's parents all
+                                    not Chinese, but there's also not a single Chinese person in my im&shy;mediate family.</p>
+
+                                <p>My mom told me that when I was three years old I asked them, "Why don't I take Chinese classes?"
+                                    And they said, "Be&shy;cause we're not Chinese." Then I said, "But my best friend takes Chinese
+                                    classes!" And my parents told me, "That's because <em>she's</em> Chinese."</p>
+
+                                <p>I asked them every day to let me take Chinese classes, and several months later, they agreed. A
+                                    few years later, my best friend moved away and I couldn't see her anymore, but I still con&shy;tinued
+                                    to take Chinese classes.</p>
+
+                                <p>When I was six I started going to a Sat&shy;urday school, called East Bay Chinese School. At first, I
+                                    didn't know a single person there. I was so nervous! The classes got harder and harder, and I
+                                    didn't know anyone outside of class who spoke Chinese so I had no way to practice. Because it
+                                    was so hard for me, my dad started to learn with me. He helped me with Chinese even while he was
+                                    working. He's a really great dad! We would practice to&shy;gether every week.</p>
+
+                                <p>But my dad wasn't actually a student, so around the time I was taking second-year and third-year
+                                    Chinese the classes were a lot harder than the first year and he didn't have the time to help me
+                                    anymore. From that point on I only prac&shy;ticed one or two hours a week, and as I grew up I got
+                                    even busier. After every test, I forgot all the vocab&shy;ulary and grammar I had learned.</p>
+
+                                <p>Even though I've been studying Chinese for so many years, before I started taking classes in
+                                    college I couldn't speak Chinese very well at all. Well, I still think I don't think my Chinese
+                                    is that good, but this class is really im&shy;portant to me. It inspired me to learn even more, and to
+                                    continue learning for the foreseeable future.</p>
+
+                                <time datetime="2017-04">April 2017</time>
+
+                            </section>
+
+                            <section class="chi">
+                                <h2>「明敏你為甚麼學中文?」</h2>
+                                <p class="first">現在我是大學二年級、中文一年級的學生，可是我四歲的時候就開始學中文。不但我媽媽爸爸爺爺奶奶外公外婆
+                                    都不是中國人， 而且我家一個中國人都沒有。</p>
+                                    
+                                <p>媽媽告訴我，我三歲的時候有一天問他們，「為什麼我不上中文課？」他們就說，「因為我們不是中國人…」我就說，「可是我
+                                    最好的朋友上呢!」他們告訴我，「因為她是中國人呢。」</p>
+                                    
+                                <p>我每天都問爸爸媽媽可不可以上中文課，好幾個月以後他們才說我可以。一、兩年以後我最好的朋友搬家了，所以我不能跟她見面
+                                    了，不過我還上中文課了。</p>
+                                    
+                                <p>我六歲的時候去了一個星期六的中文學校，「東灣中文學校」。開始的時候我一個人都不認識讓我很緊張啊！課文越來越難，
+                                    而且在學校外面我不認識說中文的人，沒有機會練習。因為我覺得學中文很難，所以我爸爸跟我一起學。他一邊工作，一邊幫我
+                                    學中文，他真是最好的爸爸！我們每個星期都一起練習中文。</p>
+                                    
+                                <p>但是我爸爸不是中文學生，所以我上二、三年級中文的時候他沒有時間了。再說，那時候的課文比一年級的課文難得多。後來我
+                                    一個星期只練習一、兩個鐘頭的中文了。再說，我長大了，忙起來了，所以考試以後我把那些生詞、語法忘了</p>
+                                
+                                <p>雖然我學中文學了好幾年，可是上大學的中文課一前我中文說得並不太好… 欸，其實我覺得還說得不太好。不過這門課很有意思，
+                                    啟發我學更多，學習下去。</p>
+                                    
+                                <time datetime="2017-04">4月2017年</time>
+
+                            </section>
+                        </section>
+                    </video>
+                </div>
+                </section>
+
+                <section class="controls">
+                    <h2>Switch Videos</h2>
+                    <form id="video_form">
+                        <fieldset>
+                            <select id="video_select">
+                                <option class="default">Select version...</option>
+                                <option value="redubbed">Redubbed (2022)</option>
+                                <option value="orig">Original (2017)</option>
+                            </select>
+                        </fieldset>
+                    </form>
+                </section>
+
+            </article>
+
+            <footer>
+                <h2 class="hide" role="button" aria-pressed="false">Find Grey Now <span class="carrot rotate"></span></h2>
+                <nav class="hidden"> <!-- add "hidden" when done-->
+                    <ul>
+                        <li><a href="https://instagram.com/mrgtbt" title="instagram">i</a></li>
+                        <li><a href="https://grey.gettheball.com" title="portfolio">p</a></li>
+                        <li><a href="mailto:greybratt@outlook.com" title="email">e</a></li>
+                    </ul>
+                </nav>
+            </footer>
         </div>
-        </section>
-
-        <section class="controls">
-            <form id="video_form">
-                <fieldset>
-                    <select id="video_select">
-                        <option>Select a video...</option>
-                        <option value="Redubbed">Redubbed (2022)</option>
-                        <option value="Orig">Original (2017)</option>
-                    </select>
-                </fieldset>
-            </form>
-        </section>
-
-    </article>
-
-    <footer>
-        <h2 class="hide">Find Grey Now</h2>
-        <nav class="hidden">
-            <ul>
-                <li><a href="https://instagram.com/mrgtbt" title="instagram">i</a></li>
-                <li><a href="https://grey.gettheball.com" title="portfolio website">p</a></li>
-                <li><a href="mailto:greybratt@outlook.com" title="email">e</a></li>
-            </ul>
-        </nav>
-    </footer>
     </main>
 </body>
 

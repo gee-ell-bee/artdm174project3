@@ -12,10 +12,9 @@ document.addEventListener('DOMContentLoaded', init);
 
 function init() {
 
-    const carrot = document.querySelector('.carrot');
-    console.log(carrot);
     // auto hiding footer
     footer.addEventListener('click', activateDropdown);
+    footer.addEventListener('onKeyDown', activateDropdown);
     
     // defining iFrame cues
     var myVidCues = [
@@ -31,41 +30,63 @@ function init() {
     // make the select list control what video format to play
     selectList.addEventListener('change', (e) => {
         const target = e.target.value;
+        console.log(target);
         const mp4 = document.getElementById('mp4');
         const webm = document.getElementById('webm');
         let sources = [mp4, webm, engSubs, chiCaps, sentences];
-        for (let i = 0; i < sources.length; i++) {
-            const name = sources[i].id;
-            if (sources[i].type) {
-                sources[i].src = 'vid/' + target + '.' + name;
-            }
-            else {
-                sources[i].src = 'cap/' + target + '_' + name + '.vtt';
+        if (target == 'orig' || target == 'redubbed') {
+            for (let i = 0; i < sources.length; i++) {
+                const name = sources[i].id;
+                if (sources[i].type) {
+                    sources[i].src = 'vid/' + target + '.' + name;
+                }
+                else {
+                    sources[i].src = 'cap/' + target + '_' + name + '.vtt';
+                };
             };
+            selectVideo(e, vid);
         };
-        selectVideo(e, vid);
     });
 };
 
 function subtitleAttention() { // pop-up to let user know they can change the sub/captions language from English to Chinese
-    let pop = document.querySelector(".pop");
+    let pop = document.querySelector('.pop');
 
     // changes to pop
-    // add styles & reveal animation **if natively placed, popup will load and then unload when page starts
-    pop.classList.add("styles");
+    // add styles & reveal animation **b/c: if natively placed, popup will load and then unload when page starts
+    pop.classList.add('styles');
     //changing contents
-    pop.innerHTML = "<p>Prefer Chinese subtitles?</p>";
+    pop.innerHTML = '<p>Prefer Chinese subtitles?</p>';
     
-    // hiding
-    pop.classList.toggle("hide");
+    // hiding pop after 2 seconds
     setTimeout(() => {
-        //pop.classList.toggle("hide");
+        pop.classList.toggle('hider');
     }, 2000);
 }
 
-function activateDropdown(e) {
-    //creating target var
-    const target = e.target;
-    // changing target & nav elem class lists
-    target.nextElementSibling.classList.toggle('hidden');
+function activateDropdown(e) { // toggle display of footer content
+    // identify karet
+    const carrot = document.querySelector('.carrot').classList;
+    // do not enact code if keyDown not the Enter or Space key
+    if (e instanceof KeyboardEvent && e.key !== 'Enter' && e.key !== ' ') {
+        return;
+    } else { // if Enter or Space key, or if e = click, then toggle display of footer
+        //creating target var
+        const activator = e.target;
+        const target = activator.nextElementSibling.classList;
+        if (target.contains('hidden')) {
+            target.remove('hidden');
+            target.toggle('show');
+            carrot.toggle('rotate');
+        } else if (target.contains('show')) {
+            // changing nav elem class lists
+            target.toggle('show');
+            target.toggle('hider');
+            carrot.toggle('rotate');
+        } else if (target.contains('hider')) {
+            target.toggle('show');
+            target.toggle('hider');
+            carrot.toggle('rotate');
+        }
+    };
 };
