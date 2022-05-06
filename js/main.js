@@ -75,11 +75,11 @@ function activateDropdown(e) { // toggle display of footer content
         const activator = e.target;
         const target = activator.nextElementSibling.classList;
         if (target.contains('hidden')) {
+            // changing nav elem class lists
             target.remove('hidden');
             target.toggle('show');
             carrot.toggle('rotate');
         } else if (target.contains('show')) {
-            // changing nav elem class lists
             target.toggle('show');
             target.toggle('hider');
             carrot.toggle('rotate');

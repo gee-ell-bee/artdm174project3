@@ -1,48 +1,3 @@
-/* #region random comments */
-/* REALLY NICE COLOR COMBO: 
-    -BG
-     - lemonchiffon
-    - main area color
-     - rgba(234, 174, 21, 0.651); not-strikingly-intense gold
-    - accent color
-     - rgba(178, 34, 34, 0.927); brick red
-
-    - rich wine red
-     - rgba(90, 20, 30, 1)
-
-    - rich red
-     - rgba(178, 34, 34, 1)
-
-    - beautiful deep warm brown
-     - bg: blanchedalmond
-     - mid: rgba(149, 87, 17, 0.708)
-     - top: rgba(149, 87, 17, 0.708)
-
-    OLD COLORS:
-    --timeTextColor: rgba(0, 0, 0, .7);
-    should match body text color but decrease opacity
-    --bodyLinkColor: rgb(134, 85, 0);
-    --bodyLinkUnderlineColor: rgba(134, 85, 0, .4);
-    --articleBgColor: rgb(205, 152, 92);
-
-    /* accents
-    --accentBorderColor: rgb(83, 33, 0);
-
-
-    /* video-specific
-    --popupBorderColor: rgb(214, 0, 0);
-    --popupBgColor: rgba(99, 77, 55, .7);
-    /* MUST be brightness < 50%
-
-    --videoBorderColor: floralwhite;
-
-    --controlsBgColor: rgba(255, 255, 255, .3);
-    --controlsBorder: 1px solid rgba(0, 0, 0, .4);
-    --controlsImgSize: 65%;
-*/
-
-/* #endregion */
-
 /* #region reset */
 *,
 *::before,
@@ -465,12 +420,76 @@ footer .hider {
 /* #endregion */
 
 @media only screen and (min-width: 800px) {
+    main {
+        max-width: 800px;
+        margin: 4rem auto;
+    }
+
+    header {
+        margin: 6rem auto auto auto;
+    }
+    
+    div#container {
+        padding: 4rem;
+    }
+    
+    article {
+        margin-bottom: 7rem;
+    }
+    
+    section.intro {
+        margin: auto auto 5rem auto;
+        padding: 0;
+    }
+
+    section.intro h1 {
+        margin-bottom: 3rem;
+    }
+    
+    section.video h2 {
+        margin-bottom: 1rem;
+    }
+    
+    div.border {
+        border: 3rem solid var(--accentBorderColor);
+    }
+
     video#vid {
-        padding: 3vw;
+        padding: 2rem;
+    }
+
+    section.controls {
+        padding: 3rem 0;
+    }
+    
+    section.controls h2 {
+        margin: auto auto auto 2rem;
+    }
+    
+    section.controls h2::after {
+        margin: auto 2rem auto 2.5rem;
     }
 
     section.video section.fallback {
-        padding: 1vw;
+        padding: 1rem;
+        display: grid;
+    }
+    
+    section.video section.fallback h2 {
+        margin: 2rem;
+        text-align: center;
+    }
+    
+    section.video section.fallback p:first-of-type {
+        margin: 2rem 2rem 3rem 2rem;
+    }
+    
+    section.video section.fallback p {
+        margin: 3rem 2rem;
+    }
+
+    section.video section.fallback {
+        padding: 1rem;
         display: grid;
         grid-template-areas:
             "a a"

@@ -11,26 +11,6 @@
 *
 */
 
-/* use it like this:
-
-import { cueTimer } from './modules/cuepoints.js';
-
-document.addEventListener('DOMContentLoaded', (e) => {
-	
-	var myCues = [
-		
-		{seconds: 2, callback: func1}, 
-		{seconds: 10, callback: func2}, 
-		{seconds: 15, callback: func3} 
-		
-		];
-
-		
-	cueTimer.setup('vid', myCues);
-	
-});
-*/
-
 
 const CueTimer = () => {
 
