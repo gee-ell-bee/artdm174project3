@@ -17,10 +17,10 @@ body {
 body {
     background-color: var(--bodyBgColor);
     color: var(--bodyTextColor);
-    line-height: 1.6;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    font-size: clamp(16px, 1.5vw, 20px);
-    font-family:  darkmode-off, Arial, Helvetica, sans-serif;
+    font-size: clamp(18px, 1.5vw, 20px);
+    font-family:  source-sans-pro, Arial, Helvetica, sans-serif;
 
     /* #region Variables */
     /* main */
@@ -34,6 +34,7 @@ body {
 
     /* accents */
     --accentBorderColor: rgb(73, 73, 73);
+    --accentLinkColor: rgba(185, 30, 30, 0.613);
 
 
     /* video-specific */
@@ -101,7 +102,7 @@ div#container {
 }
 
 article {
-    margin-bottom: 12vw;
+    margin-bottom: 10vw;
 }
 
 section.intro {
@@ -118,7 +119,7 @@ video#vid {
 }
 
 footer {
-    margin: 6vw 4vw;
+    margin: 6vw 4vw 6vw 4vw;
     border: 1px solid rgba(0, 0, 0, 0);
 }
 
@@ -154,11 +155,23 @@ nav a {
 header h1 {
     font-size: 3rem;
     text-align: center;
+    font-family: flood-std, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1, h2 {
+    font-weight: 600;
+    font-style: normal;
 }
 
 section.intro h1 {
     font-size: 2rem;
     margin-bottom: 4vw;
+    text-align: center;
+
+    font-family: source-sans-pro, sans-serif;
+    
 }
 
 section.video h2 {
@@ -223,6 +236,12 @@ footer nav li {
     height: 40px;
     border-radius: 50%;
     margin: 2vw;
+    transition: background-color 1s ease-in-out .125s;
+}
+
+footer nav li:hover {
+    transition: background-color .25s ease-in-out .125s;
+    background-color: var(--accentLinkColor);
 }
 
 .carrot {
@@ -238,6 +257,20 @@ footer nav li {
 .carrot.rotate {
     transform: rotate(-180deg);
     transition: transform .5s ease-in-out;
+}
+
+.pageNav {
+    color: var(--bodyTextColor);
+    display: block;
+    position: fixed;
+    bottom: 1%;
+    left: 2%;
+    transition: color 1s ease-in-out .125s;
+}
+
+.pageNav:hover {
+    transition: color .25s ease-in-out .125s;
+    color:var(--bodyLinkColor);
 }
 
 /* #endregion */
@@ -262,7 +295,7 @@ section.video section.fallback p {
     margin: 4vw 2vw;
 }
 
-/* text & styling */
+/* MOBILE vid fallback text & styling */
 
 section.video section.fallback h2 {
     font-size: 1.5rem;
@@ -319,7 +352,7 @@ section.controls {
 
 section.controls h2 {
     font-size: 1.5rem;
-    line-height: 1.4;
+    line-height: 1.3;
     width: max-content;
     display: flex;
     text-align: center;
@@ -331,7 +364,7 @@ section.controls h2 {
 section.controls h2::after {
     content: "\27AF";
     font-size: 2em;
-    margin: auto 2vw auto 3vw;
+    margin: auto 3vw auto 3vw;
 }
 
 form {
@@ -349,7 +382,7 @@ fieldset {
 select {
     line-height: 2;
     display: flex;
-    height: 2.25rem;
+    height: 2.5rem;
     padding: .25rem;
     justify-content: center;
     align-items: center;
@@ -422,36 +455,42 @@ footer .hider {
 @media only screen and (min-width: 800px) {
     main {
         max-width: 800px;
-        margin: 4rem auto;
+        margin: 4rem auto 5rem auto;
     }
 
     header {
-        margin: 6rem auto auto auto;
+        margin: 8rem auto 1rem auto;
     }
     
     div#container {
         padding: 4rem;
     }
+
+    div.border {
+        border: 3rem solid var(--accentBorderColor);
+    }
     
     article {
-        margin-bottom: 7rem;
+        margin-bottom: 1rem;
     }
     
     section.intro {
         margin: auto auto 5rem auto;
         padding: 0;
     }
+    
+    footer {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
 
     section.intro h1 {
         margin-bottom: 3rem;
+        text-align: left;
     }
     
     section.video h2 {
         margin-bottom: 1rem;
-    }
-    
-    div.border {
-        border: 3rem solid var(--accentBorderColor);
     }
 
     video#vid {
@@ -495,7 +534,6 @@ footer .hider {
             "a a"
             "b c";
     }
-    
     section.fallback section.explanation {
         grid-area: a;
     }
